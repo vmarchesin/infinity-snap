@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const { array, exec: { sh }, fileHelpers } = require('./utils');
 
 async function getFiles(_path, preserveGit) {

@@ -1,0 +1,25 @@
+{
+  "name": "infinity-snap",
+  "version": "1.0.0",
+  "description": "Delete half of your project files. Perfectly balanced, as all things should be.",
+  "main": "./bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "infinity-snap": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vmarchesin/infinity-snap.git"
+  },
+  "keywords": [
+    "snap"
+  ],
+  "author": "Vinicius Marchesin Araujo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vmarchesin/infinity-snap/issues"
+  },
+  "homepage": "https://github.com/vmarchesin/infinity-snap#readme"
+}
