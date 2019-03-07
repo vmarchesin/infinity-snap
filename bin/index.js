@@ -1,19 +1,10 @@
 #! /usr/bin/env node
-const { array, exec: { sh }, fileHelpers } = require('./utils');
+const { array, spawn: { sh }, fileHelpers } = require('./utils');
 
-async function getFiles(_path, preserveGit) {
-  let command = `find ${_path} -type f`
-  if (preserveGit) {
-    command += ' | grep -v git';
-  }
+async function getFiles(path, preserveGit = false) {
+  const { stdout } = await sh(path, preserveGit);
 
-  const { stdout } = await sh(command);
-
-  const shuffledFiles = array.shuffle(
-    stdout.split('\n').filter(function(filename) { return filename.length })
-  );
-
-  return shuffledFiles;
+  return array.shuffle(stdout);
 }
 
 function snap(filenames) {
@@ -22,11 +13,17 @@ function snap(filenames) {
   }
 }
 
-async function run({ path: _path = './', preserveGit = false } = {}) {
-  const filenames = await getFiles(_path, preserveGit);
+async function run({ path, preserveGit = false } = {}) {
+  const filenames = await getFiles(path, preserveGit);
 
+  console.log(filenames);
   filenames.splice(0, Math.floor(filenames.length / 2));
-  snap(filenames);
+  // snap(filenames);
 }
 
-run({ preserveGit: true });
+let path = process.cwd();
+if (process.argv.length > 2) {
+  path = process.argv[2];
+}
+
+run({ path, preserveGit: true });

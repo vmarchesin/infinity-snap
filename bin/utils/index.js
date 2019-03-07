@@ -1,9 +1,9 @@
 const array = require('./array');
-const exec = require('./exec');
+const spawn = require('./spawn');
 const fileHelpers = require('./files');
 
 module.exports = {
   array,
-  exec,
+  spawn,
   fileHelpers,
 }
