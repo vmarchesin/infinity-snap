@@ -14,7 +14,10 @@
     "url": "git+https://github.com/vmarchesin/infinity-snap.git"
   },
   "keywords": [
-    "snap"
+    "thanos",
+    "avengers",
+    "cli",
+    "delete"
   ],
   "author": "Vinicius Marchesin Araujo",
   "license": "MIT",

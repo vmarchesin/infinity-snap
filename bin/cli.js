@@ -55,12 +55,26 @@ const optionDefinitions = [
   { name: 'preserve-git', alias: 'g', type: Boolean },
   { name: 'path', alias: 'p', type: String, multiple: false, defaultOption: true },
   { name: 'verbose', alias: 'v', type: Boolean },
+  { name: 'version', type: Boolean },
 ];
+
+function handleOptions(opt) {
+  if (options.help) {
+    console.log(usage);
+    process.exit(0);
+  }
+
+  if (options.version) {
+    console.log('v0.5.0');
+    process.exit(0);
+  }
+};
 
 const options = commandLineArgs(optionDefinitions);
 const usage = commandLineUsage(usageDefinitions);
 
 module.exports ={
+  handleOptions,
   options,
   usage,
 };

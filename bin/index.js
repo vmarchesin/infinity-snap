@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 const { array, spawn: { sh }, fileHelpers } = require('./utils');
 const os = require("os");
-const { options, usage } = require('./cli');
+const { handleOptions, options, usage } = require('./cli');
 
 async function getFiles(path, preserveGit, exclude) {
   const { stdout } = await sh(path, preserveGit, exclude);
@@ -28,13 +28,9 @@ async function run({ exclude = null, path, preserveGit = false, verbose = false 
     "Perfectly balanced, as all things should be.",
     "What did it cost?\nEverything."
   ]));
-}
+};
 
-if (options.help) {
-  console.log(usage);
-
-  return;
-}
+handleOptions(options);
 
 run({
   exclude: options.exclude,
