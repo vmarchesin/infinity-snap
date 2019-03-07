@@ -1,3 +1,7 @@
+function random(array) {
+  return array[Math.floor(Math.random() * array.length)];
+};
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -8,5 +12,6 @@ function shuffle(array) {
 };
 
 module.exports = {
+  random,
   shuffle,
 };

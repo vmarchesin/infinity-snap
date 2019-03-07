@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-async function deleteFile(filename) {
+function deleteFile(filename) {
   fs.unlink(filename, function(err) {
     if (err) {
       throw err;
@@ -8,7 +8,7 @@ async function deleteFile(filename) {
   });
 };
 
-async function writeFile(filename) {
+function writeFile(filename) {
   fs.writeFile(filename, '', function(err) {
     if (err) {
       throw err;

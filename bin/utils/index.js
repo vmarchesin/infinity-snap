@@ -6,4 +6,4 @@ module.exports = {
   array,
   spawn,
   fileHelpers,
-}
+};
