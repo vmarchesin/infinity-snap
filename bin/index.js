@@ -14,7 +14,7 @@ function snap(filenames, verbose) {
     if (verbose) {
       console.log(`Deleting file: ${file}`);
     }
-    // fileHelpers.deleteFile(file);
+    fileHelpers.deleteFile(file);
   }
 };
 
