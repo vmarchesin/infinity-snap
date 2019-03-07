@@ -87,6 +87,10 @@ You can use [snap.sh](https://github.com/vmarchesin/infinity-snap/blob/master/sn
 
 <small>[snap.sh](https://github.com/vmarchesin/infinity-snap/blob/master/snap.sh) has been taken from [hotvulcan](https://github.com/hotvulcan/Thanos.sh)'s repo</small>
 
+### **Does it work on Windows?**
+
+This should work on unix systems. Maybe it works on Windows? I don't know. Try it on System32 and let me know.
+
 ## License
 
 [MIT](https://github.com/vmarchesin/infinity-snap/blob/master/LICENSE)
