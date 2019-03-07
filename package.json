@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/vmarchesin/infinity-snap#readme",
   "dependencies": {
-    "command-line-args": "^5.0.2"
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5"
   }
 }

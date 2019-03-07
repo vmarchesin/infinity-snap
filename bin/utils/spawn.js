@@ -1,14 +1,27 @@
 const { spawn } = require('child_process');
 const readline = require('readline');
 
-async function sh(path, preserveGit) {
+async function sh(path, preserveGit, exclude) {
   return new Promise(function (resolve, reject) {
     const find = spawn('find', [path, '-type', 'f']);
 
     let result = find
     if (preserveGit) {
-      const grep = spawn('grep', ['-v', 'git'], { stdio: [find.stdout, 'pipe', process.error] });
-      result = grep
+      const grepGit = spawn(
+        'grep',
+        ['-v', '.git'],
+        { stdio: [result.stdout, 'pipe', process.error] },
+      );
+      result = grepGit
+    }
+
+    if (exclude !== null) {
+      const grepExclude = spawn(
+        'grep',
+        ['-v', exclude],
+        { stdio: [result.stdout, 'pipe', process.error] },
+      );
+      result = grepExclude
     }
 
     let lines = [];

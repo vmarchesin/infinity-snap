@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 const { array, spawn: { sh }, fileHelpers } = require('./utils');
 const os = require("os");
-const commandLineArgs = require('command-line-args')
+const { options, usage } = require('./cli');
 
-async function getFiles(path, preserveGit = false) {
-  const { stdout } = await sh(path, preserveGit);
+async function getFiles(path, preserveGit, exclude) {
+  const { stdout } = await sh(path, preserveGit, exclude);
 
   return array.shuffle(stdout);
 };
@@ -18,8 +18,8 @@ function snap(filenames, verbose) {
   }
 };
 
-async function run({ path, preserveGit = false, verbose = false } = {}) {
-  const filenames = await getFiles(path, preserveGit);
+async function run({ exclude = null, path, preserveGit = false, verbose = false } = {}) {
+  const filenames = await getFiles(path, preserveGit, exclude);
 
   filenames.splice(0, Math.floor(filenames.length / 2));
   snap(filenames, verbose);
@@ -30,13 +30,15 @@ async function run({ path, preserveGit = false, verbose = false } = {}) {
   ]));
 }
 
-const optionDefinitions = [
-  { name: 'verbose', alias: 'v', type: Boolean },
-  { name: 'preserve-git', alias: 'g', type: Boolean },
-  { name: 'path', type: String, multiple: false, defaultOption: true },
-];
+if (options.help) {
+  console.log(usage);
 
-const options = commandLineArgs(optionDefinitions);
-const path = options.path || process.cwd();
+  return;
+}
 
-run({ path, preserveGit: options['preserve-git'], verbose: options.verbose });
+run({
+  exclude: options.exclude,
+  path: options.path || process.cwd(),
+  preserveGit: options['preserve-git'],
+  verbose: options.verbose,
+});
