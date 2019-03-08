@@ -34,6 +34,11 @@ const usageDefinitions = [
         description: "Does not delete any files inside '.git' folders. Use this if you don't wish to screw your git repo so you can push the balanced code.",
       },
       {
+        name: 'git-remote',
+        alias: 'r',
+        description: "Push the changes to your git repo. Only works if the current directory is a git repository.",
+      },
+      {
         name: 'verbose',
         alias: 'v',
         description: 'Enable logging the deleted files.',
@@ -53,6 +58,7 @@ const optionDefinitions = [
   { name: 'exclude', alias: 'e', type: String },
   { name: 'help', alias: 'h', type: Boolean },
   { name: 'preserve-git', alias: 'g', type: Boolean },
+  { name: 'git-remote', alias: 'r', type: Boolean },
   { name: 'path', alias: 'p', type: String, multiple: false, defaultOption: true },
   { name: 'verbose', alias: 'v', type: Boolean },
   { name: 'version', type: Boolean },
