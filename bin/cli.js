@@ -71,7 +71,7 @@ function handleOptions(opt) {
   }
 
   if (options.version) {
-    console.log('v0.5.0');
+    console.log('v0.6.0');
     process.exit(0);
   }
 };

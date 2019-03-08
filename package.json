@@ -1,6 +1,6 @@
 {
   "name": "infinity-snap",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Delete half of your project files. Perfectly balanced, as all things should be.",
   "main": "./bin/index.js",
   "scripts": {
